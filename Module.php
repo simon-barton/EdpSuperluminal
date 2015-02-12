@@ -2,18 +2,13 @@
 
 namespace EdpSuperluminal;
 
-<<<<<<< HEAD
 use EdpSuperluminal\ClassDeclaration\ClassDeclarationService;
 use EdpSuperluminal\ClassDeclaration\ClassTypeService;
 use EdpSuperluminal\ClassDeclaration\ExtendsStatementService;
 use EdpSuperluminal\ClassDeclaration\InterfaceStatementService;
 use Zend\Code\Reflection\ClassReflection;
 use Zend\Code\Scanner\FileScanner;
-=======
-use Zend\Code\Reflection\ClassReflection,
-    Zend\Code\Scanner\FileScanner,
-    Zend\Mvc\MvcEvent;
->>>>>>> totalwipeout/master
+use Zend\Mvc\MvcEvent;
 use Zend\Console\Request as ConsoleRequest;
 
 /**
