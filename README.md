@@ -1,6 +1,7 @@
 EdpSuperluminal
 ===============
 [![Build Status](https://travis-ci.org/lsklyut/EdpSuperluminal.svg?branch=feature%2Frefactor-to-some-tests)](https://travis-ci.org/lsklyut/EdpSuperluminal)
+[![Code Climate](https://codeclimate.com/github/lsklyut/EdpSuperluminal/badges/gpa.svg)](https://codeclimate.com/github/lsklyut/EdpSuperluminal)
 Version 0.0.1
 
 Introduction
