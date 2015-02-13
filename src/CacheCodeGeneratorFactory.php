@@ -5,6 +5,7 @@ namespace EdpSuperluminal;
 use EdpSuperluminal\ClassDeclaration\ClassDeclarationService;
 use EdpSuperluminal\ClassDeclaration\ClassTypeService;
 use EdpSuperluminal\ClassDeclaration\ExtendsStatementService;
+use EdpSuperluminal\ClassDeclaration\FileReflectionUseStatementService;
 use EdpSuperluminal\ClassDeclaration\InterfaceStatementService;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -19,12 +20,13 @@ class CacheCodeGeneratorFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $fileReflectionUseStatementService = new FileReflectionUseStatementService();
+        /** @var FileReflectionUseStatementService $useStatementService */
+        $useStatementService = $serviceLocator->get('EdpSuperluminal\ShouldCacheClass');
 
         $classDeclarationService = new ClassDeclarationService(
             new ClassTypeService(),
-            new ExtendsStatementService($fileReflectionUseStatementService),
-            new InterfaceStatementService($fileReflectionUseStatementService)
+            new ExtendsStatementService($useStatementService),
+            new InterfaceStatementService($useStatementService)
         );
 
         return new CacheCodeGenerator(
