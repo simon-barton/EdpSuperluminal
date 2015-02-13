@@ -3,7 +3,7 @@ install: composer install
 addons:
   code_climate:
     repo_token: d7d02495b9c00e9cb4f57ce3852045fed27e2eb2a76e79500e343726b544b302
-script: phpunit --coverage-clover build/logs/clover.xml --bootstrap vendor/autoload.php test/
+script: phpunit --coverage-clover build/logs/clover.xml
 after_script:
   - vendor/bin/test-reporter
 php:
