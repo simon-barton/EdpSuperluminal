@@ -7,27 +7,21 @@ use EdpSuperluminal\ShouldCacheClass\ShouldCacheClassSpecificationFactory;
 use Phake;
 use Zend\Code\Reflection\ClassReflection;
 
-class ShouldCacheClassSpecificationTest extends \PHPUnit_Framework_TestCase
+class ShouldCacheClassSpecificationTest extends AbstractSuperluminalTest
 {
     /**
      * @var ShouldCacheClassSpecification
      */
     protected $sut;
 
-    /**
-     * @var ClassReflection
-     */
-    protected $mockClassReflection;
 
     public function setUp()
     {
+        parent::setUp();
+
         $shouldCacheClassFactory = new ShouldCacheClassSpecificationFactory();
 
-        $serviceLocator = Phake::mock('Zend\ServiceManager\ServiceLocatorInterface');
-
-        $this->sut = $shouldCacheClassFactory->createService($serviceLocator);
-
-        $this->mockClassReflection = Phake::mock('Zend\Code\Reflection\ClassReflection');
+        $this->sut = $shouldCacheClassFactory->createService($this->serviceLocator);
     }
 
     public function testShouldCacheIfNoSpecificationsFail()
@@ -56,22 +50,18 @@ class ShouldCacheClassSpecificationTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('\Exception');
 
-        $shouldCacheClassFactory = new ShouldCacheClassSpecificationFactory();
+        $shouldCacheClassFactory = new ShouldCacheClassSpecificationFactory(array('FakeClass'));
 
-        $serviceLocator = Phake::mock('Zend\ServiceManager\ServiceLocatorInterface');
-
-        $this->sut = $shouldCacheClassFactory->createService($serviceLocator, array('FakeClass'));
+        $this->sut = $shouldCacheClassFactory->createService($this->serviceLocator);
     }
 
     public function testFactoryThrowsExceptionIfASpecificationDoesNotExist()
     {
         $this->setExpectedException('\Exception');
 
-        $shouldCacheClassFactory = new ShouldCacheClassSpecificationFactory();
+        $shouldCacheClassFactory = new ShouldCacheClassSpecificationFactory(array('Nonexistant'));
 
-        $serviceLocator = Phake::mock('Zend\ServiceManager\ServiceLocatorInterface');
-
-        $this->sut = $shouldCacheClassFactory->createService($serviceLocator, array('Nonexistant'));
+        $this->sut = $shouldCacheClassFactory->createService($this->serviceLocator);
     }
 
     protected function getMockSpecification($isSatisfied = false)
