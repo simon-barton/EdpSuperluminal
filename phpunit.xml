@@ -3,10 +3,6 @@
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
         </whitelist>
-
-        <blacklist>
-            <file>src/ShouldCacheClass/SpecificationInterface.php</file>
-        </blacklist>
     </filter>
     <testsuites>
         <testsuite name="EdpSuperluminal">
