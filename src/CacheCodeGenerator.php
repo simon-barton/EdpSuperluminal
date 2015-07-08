@@ -44,6 +44,7 @@ class CacheCodeGenerator
 
         $classContents = $classReflection->getContents(false);
         $classFileDir  = dirname($classReflection->getFileName());
+        $classContents = trim(str_replace("'__DIR__'", sprintf("'%s'", $classFileDir), $classContents));        
         $classContents = trim(str_replace('__DIR__', sprintf("'%s'", $classFileDir), $classContents));
 
         $return = "\nnamespace "
