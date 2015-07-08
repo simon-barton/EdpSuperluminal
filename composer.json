@@ -16,7 +16,10 @@
         }
     ],
     "require": {
-        "zendframework/zendframework": "2.*"
+        "zendframework/zend-console": "2.3.*",
+        "zendframework/zend-code": "2.3.*",
+        "zendframework/zend-mvc": "2.3.*",
+        "zendframework/zend-servicemanager": "2.3.*"
     },
     "require-dev": {
         "phpunit/phpunit": "4.5.*",
